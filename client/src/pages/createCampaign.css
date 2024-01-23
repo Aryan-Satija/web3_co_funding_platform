@@ -1,0 +1,16 @@
+.formField{
+    padding: 10px;
+    width: 80%;
+    background-color: #aaaaaa11;
+    border: 2px solid #aaaaaa;
+    border-radius: 5px;
+    color: #aaaaaa;
+    font-weight: bold;
+}
+.formField:focus{
+    outline: none;
+}
+.formFieldTitle{
+    font-size: 15px;
+    color: #ffffff
+}

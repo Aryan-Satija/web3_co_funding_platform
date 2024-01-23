@@ -1,0 +1,16 @@
+.icon{
+    cursor: pointer;
+    transition: 0.2s linear;
+    background-color: rgb(120, 120, 120, 0.1);
+    width: 40px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #aaaaaa
+}
+.icon:hover{
+    transform: scale(0.9);
+    color: #eeeeee
+}
