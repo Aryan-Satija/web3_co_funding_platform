@@ -2,7 +2,8 @@
     padding: 10px;
     width: 80%;
     background-color: #aaaaaa11;
-    border: 2px solid #aaaaaa;
+    border:1
+    px solid #aaaaaa;
     border-radius: 5px;
     color: #aaaaaa;
     font-weight: bold;
@@ -13,4 +14,20 @@
 .formFieldTitle{
     font-size: 15px;
     color: #ffffff
+}
+.btn{
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: #313133;
+    background: #4fd165;
+    background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+    box-shadow: 2px 2px 12px rgba(79,209,197,.64);
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    transition: all 0.4s;
+}
+.btn:hover{
+    transform: translateY(-6px);
+    box-shadow: 2px 2px 48px rgba(79,209,197,.64);
 }
