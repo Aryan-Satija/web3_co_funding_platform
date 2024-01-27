@@ -5,6 +5,8 @@ import {  ThirdwebProvider } from "@thirdweb-dev/react";
 import {Sepolia} from '@thirdweb-dev/chains';
 import { StateContextProvider } from "./utils/index.jsx";
 import App from './App.jsx';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const CLIENT_ID = process.env.CLIENT_ID;
 // console.log("client id : ", CLIENT_ID);
@@ -13,6 +15,7 @@ root.render(
       <Router>
         <StateContextProvider>
           <App/>
+          <ToastContainer/>
         </StateContextProvider>
       </Router>
     </ThirdwebProvider>

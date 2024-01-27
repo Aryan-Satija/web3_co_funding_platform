@@ -17,16 +17,12 @@ export const CreateCampaign = () => {
     const img = new Image();
     img.src = form.image;
     if(img.complete){
-        try{
-            alert('laoding');
-            await publishCampaign({...form, goal: ethers.utils.parseUnits(form.goal, 18)});
-            alert('published successfully');
-        } catch(err){
-            alert(err.message);
-        }
     }
-    else{
-        // invalid image
+    img.onload = async() => {
+        await publishCampaign({...form, goal: ethers.utils.parseUnits(form.goal, 18)});
+    }
+    img.onerror = ()=>{
+        console.log('invalid image....')
     }
   }
   const changeHandler = (event)=>{
