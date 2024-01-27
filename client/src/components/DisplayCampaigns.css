@@ -1,0 +1,6 @@
+.campaignCard{
+    width: 300px;
+    cursor: pointer;
+    background-color: rgba(120,120,120,0.2);
+    border-radius: 5px
+}

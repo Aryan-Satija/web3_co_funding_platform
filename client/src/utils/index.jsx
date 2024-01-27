@@ -1,11 +1,12 @@
 import React, {useContext, createContext} from "react";
 import { useAddress, useConnect, metamaskWallet, useContract, useContractWrite } from "@thirdweb-dev/react";
 import { toast } from "react-toastify";
+import { ethers } from "ethers";
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children })=>{
     
-    const {contract} = useContract('0xa12CfBA186481a2073C4024c5A64a551d8AC1F27')
+    const {contract} = useContract('0x0c003b99a1fba8Cb3A44F9f8132eA6E673F0e7F3')
     const {mutateAsync: createCampaign} = useContractWrite(contract, 'createCampaign')
     const address = useAddress();
     const connect = useConnect();
@@ -35,7 +36,6 @@ export const StateContextProvider = ({ children })=>{
             });
             toast.update(id, {render: 'Campaign Published Successfully....', type: 'success', autoClose: 5000, isLoading: false});
             console.log('Campaign Published Successfully');
-            console.log(data);
         } catch(err){
             toast.update(id, {render: `${err.message}`, type: 'error', autoClose: 5000, isLoading: false});
             console.log('Something Went Wrong!');
@@ -62,9 +62,17 @@ export const StateContextProvider = ({ children })=>{
             toast.update(id, {render: 'Campaigns Fetched ....', type: 'success', autoClose: 5000, isLoading: false});
             return parsedCampaigns;
         } catch(err){
+            console.log(err.message);
             toast.update(id, {render: `${err.message}`, type: 'error', autoClose: 5000, isLoading: false})
             return [];
         }
+    }
+
+    const getUserCampaigns = async()=>{
+        const allCampaigns = await getCampaigns();
+        const userCampaigns = allCampaigns.filter((campaign)=>{
+            if(campaign.owner.toString() === address) return address; 
+        })        
     }
     return (<StateContext.Provider
         value={{
@@ -72,6 +80,7 @@ export const StateContextProvider = ({ children })=>{
             contract,
             publishCampaign,
             getCampaigns,
+            getUserCampaigns,
             connectToWallet
         }}
     >

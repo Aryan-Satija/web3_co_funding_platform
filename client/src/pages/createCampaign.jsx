@@ -34,7 +34,7 @@ export const CreateCampaign = () => {
     });
   }
    return (
-    <form style={{padding:'10px', display:'flex', flexDirection:'column', gap:'20px'}} onSubmit={submitHandler}>
+    <form style={{padding:'10px', display:'flex', flexDirection:'column', gap:'20px', fontFamily: 'fantasy', letterSpacing: '0.5px'}} onSubmit={submitHandler}>
         <div style={{display: 'flex', flexDirection: 'column', gap:'5px', width:'100%', alignItems:'center'}}>
             <label htmlFor='name' className='formFieldTitle'>Your Name <span style={{color:'#00ff00'}}>*</span></label>
             <input type='text' id='name' placeholder='John Doe' className='formField' onChange={changeHandler} autoComplete='off' required/>
