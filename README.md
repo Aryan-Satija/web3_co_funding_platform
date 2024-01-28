@@ -8,4 +8,4 @@
 
 - Raise Funds For the Drives
 
-![image](https://github.com/Aryan-Satija/web3_co_funding_platform/assets/124520942/c9419ec0-cff2-4d5c-ae03-6c52bf94957a)
+![image](https://github.com/Aryan-Satija/web3_co_funding_platform/assets/124520942/2144c438-5cba-4f3b-928b-c12838801c04)
