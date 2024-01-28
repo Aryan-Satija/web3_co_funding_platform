@@ -1,6 +1,7 @@
 import { ConnectWallet } from "@thirdweb-dev/react";
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
+import { CampaignDetails } from "./pages/campaignDetails";
 import { CreateCampaign } from "./pages/createCampaign";
 import { DisplayCampaigns } from "./components/DisplayCampaigns";
 export default function Home() {
@@ -9,8 +10,9 @@ export default function Home() {
       	<Navbar />
 		<Routes>
 			<Route exact path='/' element={<DisplayCampaigns title={'All Campaigns'} personalised={false}/>}/>
-			{/* <Route exact path="/profile" element={<Profile/>}/> */}
-			<Route exact path="/createCampaign" element={<CreateCampaign/>}/>
+			<Route exact path='/profile' element={<DisplayCampaigns title={'Your Campaigns'} personalised={true}/>}/>
+			<Route exact path='/createCampaign' element={<CreateCampaign/>}/>
+			<Route exact path='/campaignDetails/:id' element={<CampaignDetails/>}/>
 		</Routes>
     </div>
   );

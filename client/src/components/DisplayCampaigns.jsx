@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { useStateContext } from '../utils';
+import { useNavigate } from 'react-router-dom';
 import './DisplayCampaigns.css'
 export const DisplayCampaigns = ({title, personalised}) => {
     const [campaigns, setCampaigns] = useState([]);
     const {contract, getCampaigns, getUserCampaigns} = useStateContext();
+    const navigate = useNavigate();
     useEffect(()=>{
         if(contract){
             (async()=>{
@@ -17,7 +19,7 @@ export const DisplayCampaigns = ({title, personalised}) => {
                 }
             })();
         }
-    }, [contract])
+    }, [contract, title, personalised])
     console.log(campaigns);
     return (
     <div>
@@ -35,7 +37,9 @@ export const DisplayCampaigns = ({title, personalised}) => {
                                 <div style={{fontFamily: 'fantasy', letterSpacing: '0.5px', color: '#0098ff'}}>Goal: {campaign.goal} eth</div>
                                 <div style={{fontFamily: 'fantasy', letterSpacing: '0.5px', color: '#0076ff'}}>Funds Collected: {campaign.amountCollected} eth</div>
                                 <div style={{fontFamily: 'fantasy', letterSpacing: '0.5px', color: '#cccccc'}}>Owner: {campaign.owner.substr(0, 25)}....</div>
-                                <button className='btn'>RAISE FUND</button>
+                                <button className='btn' onClick={()=>{
+                                    navigate(`/campaignDetails/${campaign.pid+1}`)
+                                }}>RAISE FUND</button>
                             </div>
                         </div>
                     </div>)

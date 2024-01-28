@@ -26,7 +26,9 @@ export const Navbar = () => {
             }}>
                 <IoCreate size={'25px'}/>
             </div>
-            <div className='icon'>
+            <div className='icon' onClick={()=>{
+                navigate('/profile')
+            }}>
                 <CgProfile size={'25px'}/>
             </div>
         </div>
