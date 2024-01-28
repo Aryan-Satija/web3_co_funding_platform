@@ -1,14 +1,12 @@
-// owner
-// pid
-
-
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { useStateContext } from '../utils';
 export const CampaignDetails = () => {
     const {id} = useParams();
     const [campaignDetails, setCampaignDetails] = useState(null); 
-    const {contract, getCampaigns} = useStateContext();
+    const {contract, getCampaigns, donate} = useStateContext();
+    const [amount, setAmount] = useState('0'); 
+    console.log(amount);
     useEffect(()=>{
         (async()=>{
             if(contract){
@@ -19,7 +17,8 @@ export const CampaignDetails = () => {
                 setCampaignDetails(campaign);
             }
         })()
-    }, [contract])
+    }, [contract]);
+    console.log(contract);
     return (
         <div >
             {
@@ -57,8 +56,10 @@ export const CampaignDetails = () => {
                         </span>
                     </div>
                     <div style={{display: 'flex', alignItems: 'center', gap: '15px'}}>
-                        <input type='number' step='0.1' className='formField'/>
-                        <button className='btn'>Fund Now</button>
+                        <input type='number' step='0.1' className='formField' onChange={(event)=>{setAmount(event.target.value)}}/>
+                        <button className='btn' onClick={async()=>{
+                            await donate(campaignDetails.pid, amount);
+                        }}>Fund Now</button>
                     </div>
                 </div>) : (<div style={{padding: '2rem', fontFamily: 'fantasy', color: '#aaaaaa', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                     Loading....

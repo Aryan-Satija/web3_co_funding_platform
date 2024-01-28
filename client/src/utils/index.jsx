@@ -21,6 +21,7 @@ export const StateContextProvider = ({ children })=>{
             toast.update(id, {render: `${err.message}`, type: 'error', autoClose: 5000, isLoading: false});
         }
     }
+
     const publishCampaign = async(form)=>{
         const id = toast.loading('Loading....');
         try{
@@ -75,6 +76,19 @@ export const StateContextProvider = ({ children })=>{
         })   
         return userCampaigns;
     }
+  
+    const donate = async(pId, amount)=>{
+        const id = toast.loading('Please Wait ....')
+        try{
+            toast.update(id, {render: 'Task Successful', type: 'success', autoClose: 5000, isLoading: false});
+            const data = await contract.call('donate', [pId], {value: ethers.utils.parseEther(amount)});
+            return data;
+        }
+        catch(err){
+            toast.update(id, {render: `${err.message}`, type: 'error', autoClose: 5000, isLoading: false});
+        }
+    }
+
     return (<StateContext.Provider
         value={{
             address,
@@ -82,6 +96,7 @@ export const StateContextProvider = ({ children })=>{
             publishCampaign,
             getCampaigns,
             getUserCampaigns,
+            donate, 
             connectToWallet
         }}
     >
