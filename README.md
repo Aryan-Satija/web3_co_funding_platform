@@ -1,5 +1,11 @@
 # web3_co_funding_platform
 
+## What is it about ?
+
+- co-funding platform designed to bring together individuals, organizations, and communities to support and contribute to impactful projects and initiatives.
+
+- Funding process is completely transparent as it works on blockchain technology.
+
 ## Features
 
 - Create Initiative
